@@ -13,6 +13,7 @@
 		5AFBBF9D1DD85721006654D1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5AFBBF9B1DD85721006654D1 /* Main.storyboard */; };
 		5AFBBF9F1DD85721006654D1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5AFBBF9E1DD85721006654D1 /* Assets.xcassets */; };
 		5AFBBFA21DD85721006654D1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5AFBBFA01DD85721006654D1 /* LaunchScreen.storyboard */; };
+		5AFBBFAC1DD85856006654D1 /* GYMarquee.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AFBBFAB1DD85856006654D1 /* GYMarquee.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,8 @@
 		5AFBBF9E1DD85721006654D1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5AFBBFA11DD85721006654D1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5AFBBFA31DD85721006654D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5AFBBFAA1DD85856006654D1 /* GYMarquee.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GYMarquee.h; sourceTree = "<group>"; };
+		5AFBBFAB1DD85856006654D1 /* GYMarquee.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GYMarquee.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +61,7 @@
 		5AFBBF911DD85721006654D1 /* GYMarquee */ = {
 			isa = PBXGroup;
 			children = (
+				5AFBBFA91DD8574A006654D1 /* GYMarquee */,
 				5AFBBF951DD85721006654D1 /* AppDelegate.h */,
 				5AFBBF961DD85721006654D1 /* AppDelegate.m */,
 				5AFBBF981DD85721006654D1 /* ViewController.h */,
@@ -77,6 +81,15 @@
 				5AFBBF931DD85721006654D1 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		5AFBBFA91DD8574A006654D1 /* GYMarquee */ = {
+			isa = PBXGroup;
+			children = (
+				5AFBBFAA1DD85856006654D1 /* GYMarquee.h */,
+				5AFBBFAB1DD85856006654D1 /* GYMarquee.m */,
+			);
+			path = GYMarquee;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -151,6 +164,7 @@
 			files = (
 				5AFBBF9A1DD85721006654D1 /* ViewController.m in Sources */,
 				5AFBBF971DD85721006654D1 /* AppDelegate.m in Sources */,
+				5AFBBFAC1DD85856006654D1 /* GYMarquee.m in Sources */,
 				5AFBBF941DD85721006654D1 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -300,6 +314,7 @@
 				5AFBBFA81DD85721006654D1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
