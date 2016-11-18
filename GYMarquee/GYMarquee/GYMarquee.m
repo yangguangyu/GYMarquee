@@ -123,15 +123,39 @@
         self.time = _textLabel.frame.size.width / 40;//40点/秒
     }
     
-    //切换到后台，cpu会飙升到100%，不知道为什么
+    //切换到后台，cpu会飙升到100%，不知道为什么 - 找到了，递归的退出条件没有
     _textLabel.transform = CGAffineTransformIdentity;
-    [UIView animateWithDuration:self.time delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
-        _textLabel.transform = CGAffineTransformMakeTranslation(-_textLabel.frame.size.width - self.frame.size.width, 0);
-        
-        NSLog(@"%@",NSStringFromCGAffineTransform(_textLabel.transform));
-    } completion:^(BOOL finished) {
+//    [UIView animateWithDuration:self.time delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
+//        _textLabel.transform = CGAffineTransformMakeTranslation(-_textLabel.frame.size.width - self.frame.size.width, 0);
+//    } completion:^(BOOL finished) {
+//        if (finished) {
+//            [self changeFrame];
+//        }
+//        
+//    }];
+    
+    /** Timing function names. **/
+    
+//    CA_EXTERN NSString * const kCAMediaTimingFunctionLinear
+//    CA_EXTERN NSString * const kCAMediaTimingFunctionEaseIn
+//    CA_EXTERN NSString * const kCAMediaTimingFunctionEaseOut
+//    CA_EXTERN NSString * const kCAMediaTimingFunctionEaseInEaseOut
+//    CA_EXTERN NSString * const kCAMediaTimingFunctionDefault
+    
+    CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"transform"];
+    animation.toValue = [NSValue valueWithCATransform3D:CATransform3DMakeTranslation(-_textLabel.frame.size.width - self.frame.size.width, 0, 0)];
+    animation.duration = self.time;
+    animation.timeOffset = 0;
+    animation.delegate = self;
+    animation.timingFunction =[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear];//贝塞尔曲线，自己创建或者使用系统提供的
+    
+    [self.layer addAnimation:animation forKey:nil];
+}
+
+- (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag {
+    if (flag) {
         [self changeFrame];
-    }];
+    }
 }
 
 #pragma mark - set
