@@ -18,10 +18,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    GYMarquee *view = [[GYMarquee alloc] initWithFont:[UIFont systemFontOfSize:15] textColor:[UIColor redColor] Text:@"平移变换将路径或图形上下文中的形状的当前位置平移到另一个相对位置。举例来说"];
-    view.backgroundColor = [UIColor blueColor];
+    GYMarquee *view = [[GYMarquee alloc] init];
     view.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 100);
     view.center = self.view.center;
+    view.textFont = [UIFont systemFontOfSize:17];
+    view.text = @"kdfhvier时间段参考文件二级时间段开挖掘机";
+    view.textColor = [UIColor redColor];
+    view.textBgColor = [UIColor blueColor];
     [self.view addSubview:view];
 }
 

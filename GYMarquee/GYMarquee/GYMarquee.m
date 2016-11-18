@@ -20,22 +20,33 @@
 @interface GYMarquee () {
 //    UILabel *_textLabel;
     NSTimer *_timer;
-    UIFont *_textFont;
-    UIColor *_textColor;
+//    UIFont *_textFont;
+//    UIColor *_textColor;
+//    UIColor *_textBgColor
 }
-@property (nonatomic, strong) NSString *text;
+//@property (nonatomic, strong) NSString *text;
 
 @end
 @implementation GYMarquee
 
 #pragma mark - life cycle
 
-- (instancetype)initWithFont:(UIFont *)font textColor:(UIColor *)color Text:(NSString *)text {
+- (instancetype)initWithFont:(UIFont *)font textColor:(UIColor *)color backgrundColor:(UIColor *)bgColor Text:(NSString *)text {
     self = [super init];
     if (self) {
         self.text = text;
         _textFont = font;
         _textColor = color;
+        _textBgColor = bgColor;
+        [self configUI];
+    }
+    return self;
+}
+
+- (instancetype)initWithText:(NSString *)text {
+    self = [super init];
+    if (self) {
+        self.text = text;
         [self configUI];
     }
     return self;
@@ -47,6 +58,9 @@
 
 - (void)layoutSubviews {
     [super layoutSubviews];
+//    CGRect rect = _textLabel.frame;
+//    rect.origin.x = self.bounds.size.width;
+//    _textLabel.frame = rect;
 }
 
 - (void)didMoveToWindow {
@@ -59,12 +73,9 @@
 //    self.time = 10;
     
     _textLabel = [[UILabel alloc] init];
-    _textLabel.text = self.text;
-//    _textLabel.textColor = YGYGrayColor(50);
-//    _textLabel.font = Font(14);
-    
-    _textLabel.textColor = _textColor;
-    _textLabel.font = _textFont;
+    _textLabel.text = _text;
+    _textLabel.textColor = _textColor ? :YGYGrayColor(50);
+    _textLabel.font = _textFont ? : Font(14);
     _textLabel.numberOfLines = 0;
     _textLabel.userInteractionEnabled = YES;
     _textLabel.textAlignment = NSTextAlignmentNatural;
@@ -74,7 +85,7 @@
     [_textLabel addGestureRecognizer:tap];
     
     CGRect rect = _textLabel.frame;
-    rect.origin.x = [UIScreen mainScreen].bounds.size.width;
+    rect.origin.x = self.bounds.size.width;
     _textLabel.frame = rect;
     
     [self addSubview:_textLabel];
@@ -116,9 +127,37 @@
     _textLabel.transform = CGAffineTransformIdentity;
     [UIView animateWithDuration:self.time delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
         _textLabel.transform = CGAffineTransformMakeTranslation(-_textLabel.frame.size.width - self.frame.size.width, 0);
+        
+        NSLog(@"%@",NSStringFromCGAffineTransform(_textLabel.transform));
     } completion:^(BOOL finished) {
         [self changeFrame];
     }];
+}
+
+#pragma mark - set
+- (void)setText:(NSString *)text {
+    if (_text) {
+        return;
+    }
+    _text = text;
+    _textLabel.text = _text;
+    [self configUI];
+}
+
+- (void)setTextFont:(UIFont *)textFont {
+    _textFont = textFont;
+    _textLabel.font = textFont;
+    [_textLabel sizeToFit];
+}
+
+- (void)setTextColor:(UIColor *)textColor {
+    _textColor = textColor;
+    _textLabel.textColor = textColor;
+}
+
+- (void)setTextBgColor:(UIColor *)textBgColor {
+    _textBgColor = textBgColor;
+    _textLabel.backgroundColor = textBgColor;
 }
 
 @end

@@ -21,9 +21,18 @@ typedef void(^actionBlock)(GYMarquee *marquee);
 /* 时间 */
 @property (nonatomic, assign) NSTimeInterval time;
 /* 标签元素 - 拿到可以设置背景，字体等 */
-@property (nonatomic, strong) UILabel *textLabel;;
+@property (nonatomic, strong) UILabel *textLabel;
+/* 文字 */
+@property (nonatomic, strong) NSString *text;
+/* 文字颜色 */
+@property (nonatomic, strong) UIColor *textColor;
+/* 文字字体 */
+@property (nonatomic, strong) UIFont *textFont;
+/* 背景颜色 */
+@property (nonatomic, strong) UIColor *textBgColor;
 @property (nonatomic, weak) id <GYMarqueeDelegate> delegate;
 @property (nonatomic, copy) actionBlock block;
 
-- (instancetype)initWithFont:(UIFont *)font textColor:(UIColor *)color Text:(NSString *)text;
+- (instancetype)initWithFont:(UIFont *)font textColor:(UIColor *)color backgrundColor:(UIColor *)bgColor Text:(NSString *)text;
+- (instancetype)initWithText:(NSString *)text;
 @end
