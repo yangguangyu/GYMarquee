@@ -21,8 +21,9 @@
     UILabel *_label1;
     UILabel *_label2;
     NSTimer *_timer;
+    
 }
-
+@property (nonatomic, assign) NSInteger currentIndex;;
 @end
 
 @implementation GYVerticalMarquee
@@ -52,6 +53,8 @@
 
 #pragma mark - public method
 - (void)configUI {
+    self.currentIndex = 1;
+    
     _label1 = [[UILabel alloc] init];
     _label1.text = _text[0];
     _label1.textColor = _textColor ? :YGYGrayColor(50);
@@ -96,15 +99,25 @@
         _label2.frame = rect2;
     } completion:^(BOOL finished) {
         if (finished) {
+            self.currentIndex++;
+            NSLog(@"~~%ld",self.currentIndex);
+            self.currentIndex = (self.currentIndex % self.text.count);
+            NSLog(@"%ld",self.currentIndex);
             if (_label1.frame.origin.y == -self.bounds.size.height) {
                 CGRect rect = _label1.frame;
                 rect.origin.y = self.bounds.size.height;
                 _label1.frame = rect;
+                _label1.text = self.text[_currentIndex];
+                NSLog(@"%@",_label1.text);
             }else if (_label2.frame.origin.y == -self.bounds.size.height) {
                 CGRect rect = _label2.frame;
                 rect.origin.y = self.bounds.size.height;
                 _label2.frame = rect;
+                _label2.text = self.text[_currentIndex];
+                NSLog(@"%@",_label2.text);
             }
+            
+            
         }
 
     }];

@@ -31,7 +31,7 @@
     GYVerticalMarquee *view1 = [[GYVerticalMarquee alloc] init];
     view1.frame = CGRectMake(0, 40, [UIScreen mainScreen].bounds.size.width, 40);
     view1.textFont = [UIFont systemFontOfSize:17];
-    view1.text = @[@"kdfhvier时间段参考文件二级时间段开挖掘机" ,@"~~~~~~~~~~~~~~~~~~~~"];
+    view1.text = @[@"11111111111" ,@"222222222",@"333333333",@"4444444",@"55555555"];
     view1.textColor = [UIColor redColor];
     view1.textBgColor = [UIColor blueColor];
     view1.backgroundColor = [UIColor yellowColor];
