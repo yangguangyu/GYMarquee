@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 @class GYMarquee;
 
-typedef void(^actionBlock)(GYMarquee *marquee);
+typedef void(^GYMarqueeActionBlock)(GYMarquee *marquee);
 
 @protocol GYMarqueeDelegate <NSObject>
 //- (void)marquee:(GYMarquee *)marquee didTap
@@ -31,7 +31,7 @@ typedef void(^actionBlock)(GYMarquee *marquee);
 /* 背景颜色 */
 @property (nonatomic, strong) UIColor *textBgColor;
 @property (nonatomic, weak) id <GYMarqueeDelegate> delegate;
-@property (nonatomic, copy) actionBlock block;
+@property (nonatomic, copy) GYMarqueeActionBlock block;
 
 - (instancetype)initWithFont:(UIFont *)font textColor:(UIColor *)color backgrundColor:(UIColor *)bgColor Text:(NSString *)text;
 - (instancetype)initWithText:(NSString *)text;

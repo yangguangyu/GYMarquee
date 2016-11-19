@@ -159,6 +159,11 @@
 }
 
 #pragma mark - set
+- (void)setTime:(NSTimeInterval)time {
+    _time = time;
+    [self configUI];
+}
+
 - (void)setText:(NSString *)text {
     if (_text) {
         return;

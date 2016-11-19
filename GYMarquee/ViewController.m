@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "GYMarquee.h"
+#import "GYVerticalMarquee.h"
 
 @interface ViewController ()
 
@@ -18,14 +19,24 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    GYMarquee *view = [[GYMarquee alloc] init];
-    view.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 100);
-    view.center = self.view.center;
-    view.textFont = [UIFont systemFontOfSize:17];
-    view.text = @"kdfhvier时间段参考文件二级时间段开挖掘机";
-    view.textColor = [UIColor redColor];
-    view.textBgColor = [UIColor blueColor];
-    [self.view addSubview:view];
+//    GYMarquee *view = [[GYMarquee alloc] init];
+//    view.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 100);
+//    view.center = self.view.center;
+//    view.textFont = [UIFont systemFontOfSize:17];
+//    view.text = @"kdfhvier时间段参考文件二级时间段开挖掘机";
+//    view.textColor = [UIColor redColor];
+//    view.textBgColor = [UIColor blueColor];
+//    [self.view addSubview:view];
+    
+    GYVerticalMarquee *view1 = [[GYVerticalMarquee alloc] init];
+    view1.frame = CGRectMake(0, 40, [UIScreen mainScreen].bounds.size.width, 40);
+    view1.textFont = [UIFont systemFontOfSize:17];
+    view1.text = @[@"kdfhvier时间段参考文件二级时间段开挖掘机" ,@"~~~~~~~~~~~~~~~~~~~~"];
+    view1.textColor = [UIColor redColor];
+    view1.textBgColor = [UIColor blueColor];
+    view1.backgroundColor = [UIColor yellowColor];
+    [self.view addSubview:view1];
+    
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
