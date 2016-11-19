@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5A8BB30E1DE0A5B2001E4338 /* UIView+YGYAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A8BB30D1DE0A5B2001E4338 /* UIView+YGYAdd.m */; };
 		5AD4B6811DDF34E700B55E53 /* GYVerticalMarquee.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AD4B6801DDF34E700B55E53 /* GYVerticalMarquee.m */; };
 		5AFBBF941DD85721006654D1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AFBBF931DD85721006654D1 /* main.m */; };
 		5AFBBF971DD85721006654D1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AFBBF961DD85721006654D1 /* AppDelegate.m */; };
@@ -18,6 +19,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5A8BB30C1DE0A5B2001E4338 /* UIView+YGYAdd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+YGYAdd.h"; sourceTree = "<group>"; };
+		5A8BB30D1DE0A5B2001E4338 /* UIView+YGYAdd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+YGYAdd.m"; sourceTree = "<group>"; };
 		5AD4B67F1DDF34E700B55E53 /* GYVerticalMarquee.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GYVerticalMarquee.h; sourceTree = "<group>"; };
 		5AD4B6801DDF34E700B55E53 /* GYVerticalMarquee.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GYVerticalMarquee.m; sourceTree = "<group>"; };
 		5AFBBF8F1DD85721006654D1 /* GYMarquee.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GYMarquee.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -89,6 +92,8 @@
 		5AFBBFA91DD8574A006654D1 /* GYMarquee */ = {
 			isa = PBXGroup;
 			children = (
+				5A8BB30C1DE0A5B2001E4338 /* UIView+YGYAdd.h */,
+				5A8BB30D1DE0A5B2001E4338 /* UIView+YGYAdd.m */,
 				5AFBBFAA1DD85856006654D1 /* GYMarquee.h */,
 				5AFBBFAB1DD85856006654D1 /* GYMarquee.m */,
 				5AD4B67F1DDF34E700B55E53 /* GYVerticalMarquee.h */,
@@ -171,6 +176,7 @@
 				5AFBBF9A1DD85721006654D1 /* ViewController.m in Sources */,
 				5AFBBF971DD85721006654D1 /* AppDelegate.m in Sources */,
 				5AFBBFAC1DD85856006654D1 /* GYMarquee.m in Sources */,
+				5A8BB30E1DE0A5B2001E4338 /* UIView+YGYAdd.m in Sources */,
 				5AFBBF941DD85721006654D1 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

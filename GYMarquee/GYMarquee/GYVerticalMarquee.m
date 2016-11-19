@@ -8,7 +8,7 @@
 //
 
 #import "GYVerticalMarquee.h"
-
+#import "UIView+YGYAdd.h"
 //--color
 #define YGYColorA(r, g, b, a) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:(a)/255.0]
 #define YGYColor(r, g, b) YGYColorA((r), (g), (b), 255)
@@ -73,14 +73,27 @@
     _label2.textAlignment = NSTextAlignmentNatural;
     [_label2 sizeToFit];
     
-    //默认位置
-    _label1.frame = CGRectMake(0, 0, _label1.frame.size.width, _label1.frame.size.height);
-    _label2.frame = CGRectMake(0, self.frame.size.height, _label2.frame.size.width, _label2.frame.size.height);
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction)];
+    [_label1 addGestureRecognizer:tap];
+    [_label2 addGestureRecognizer:tap];
     
+    //默认位置
+    _label1.frame = CGRectMake(0, (self.frame.size.height - _label1.frame.size.height)*0.5, self.frame.size.width, _label1.frame.size.height);
+    _label2.frame = CGRectMake(0, self.frame.size.height + (self.frame.size.height - _label1.frame.size.height)*0.5, self.frame.size.width, _label2.frame.size.height);
     
     [self addSubview:_label1];
     [self insertSubview:_label2 belowSubview:_label1];
     
+}
+
+- (void)tapAction {
+    if (self.delegate && [self.delegate respondsToSelector:@selector(tapAtIndex:)]) {
+        [self.delegate tapAtIndex:self.currentIndex];
+    }
+    
+    if (self.block) {
+        self.block(self.currentIndex);
+    }
 }
 
 - (void)changeFrame {
@@ -103,15 +116,15 @@
             NSLog(@"~~%ld",self.currentIndex);
             self.currentIndex = (self.currentIndex % self.text.count);
             NSLog(@"%ld",self.currentIndex);
-            if (_label1.frame.origin.y == -self.bounds.size.height) {
+            if (_label1.frame.origin.y < 0) {
                 CGRect rect = _label1.frame;
-                rect.origin.y = self.bounds.size.height;
+                rect.origin.y = self.bounds.size.height + (self.bounds.size.height-_label1.frame.size.height)*0.5;
                 _label1.frame = rect;
                 _label1.text = self.text[_currentIndex];
                 NSLog(@"%@",_label1.text);
-            }else if (_label2.frame.origin.y == -self.bounds.size.height) {
+            }else if (_label2.frame.origin.y < 0) {
                 CGRect rect = _label2.frame;
-                rect.origin.y = self.bounds.size.height;
+                rect.origin.y = self.bounds.size.height + (self.bounds.size.height-_label1.frame.size.height)*0.5;
                 _label2.frame = rect;
                 _label2.text = self.text[_currentIndex];
                 NSLog(@"%@",_label2.text);
@@ -159,7 +172,14 @@
     _textFont = textFont;
     _label1.font = textFont;
     _label2.font = textFont;
+    
     [_label1 sizeToFit];
+    _label1.ygy_width = self.ygy_width;
+    _label1.center = self.center;
+    
+    [_label2 sizeToFit];
+    _label2.ygy_width = self.ygy_width;
+    _label2.center = self.center;
 }
 
 - (void)setTextColor:(UIColor *)textColor {

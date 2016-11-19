@@ -19,10 +19,10 @@
 
 @class GYVerticalMarquee;
 @protocol GYVerticalMarqueeDelegate <NSObject>
-
+- (void)tapAtIndex:(NSInteger)index;
 @end
 
-typedef void(^GYVerticalMarqueeActionBlock)();
+typedef void(^GYVerticalMarqueeActionBlock)(NSInteger index);
 
 @interface GYVerticalMarquee : UIView
 /* 滚动动画的时间 */
