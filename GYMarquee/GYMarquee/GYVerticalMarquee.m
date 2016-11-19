@@ -47,7 +47,6 @@
 }
 
 -(void)didMoveToWindow {
-//    [self changeFrame];
     [self startTimer];
 }
 
@@ -91,7 +90,6 @@
     
     CGRect rect2 = _label2.frame;
     rect2.origin.y -= self.frame.size.height;
-    NSLog(@"%s",__func__);
     
     [UIView animateWithDuration:_scrollTimeInterval delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
         _label1.frame = rect1;
@@ -102,15 +100,11 @@
                 CGRect rect = _label1.frame;
                 rect.origin.y = self.bounds.size.height;
                 _label1.frame = rect;
-                NSLog(@"%f",_label1.frame.origin.y);
             }else if (_label2.frame.origin.y == -self.bounds.size.height) {
                 CGRect rect = _label2.frame;
                 rect.origin.y = self.bounds.size.height;
                 _label2.frame = rect;
             }
-            
-            NSLog(@"lbael1 - %f  lbael2 - %f",_label1.frame.origin.y,_label2.frame.origin.y);
-//            NSLog(@"lbael2 - %f",_label2.frame.origin.y);
         }
 
     }];

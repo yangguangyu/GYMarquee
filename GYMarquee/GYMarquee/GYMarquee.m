@@ -18,13 +18,8 @@
 
 
 @interface GYMarquee () {
-//    UILabel *_textLabel;
     NSTimer *_timer;
-//    UIFont *_textFont;
-//    UIColor *_textColor;
-//    UIColor *_textBgColor
 }
-//@property (nonatomic, strong) NSString *text;
 
 @end
 @implementation GYMarquee
@@ -125,22 +120,17 @@
     
     //切换到后台，cpu会飙升到100%，不知道为什么 - 找到了，递归的退出条件没有
     _textLabel.transform = CGAffineTransformIdentity;
-//    [UIView animateWithDuration:self.time delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
-//        _textLabel.transform = CGAffineTransformMakeTranslation(-_textLabel.frame.size.width - self.frame.size.width, 0);
-//    } completion:^(BOOL finished) {
-//        if (finished) {
-//            [self changeFrame];
-//        }
-//        
-//    }];
     
-    /** Timing function names. **/
-    
-//    CA_EXTERN NSString * const kCAMediaTimingFunctionLinear
-//    CA_EXTERN NSString * const kCAMediaTimingFunctionEaseIn
-//    CA_EXTERN NSString * const kCAMediaTimingFunctionEaseOut
-//    CA_EXTERN NSString * const kCAMediaTimingFunctionEaseInEaseOut
-//    CA_EXTERN NSString * const kCAMediaTimingFunctionDefault
+    /*
+     [UIView animateWithDuration:self.time delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
+        _textLabel.transform = CGAffineTransformMakeTranslation(-_textLabel.frame.size.width - self.frame.size.width, 0);
+    } completion:^(BOOL finished) {
+        if (finished) {
+            [self changeFrame];
+        }
+        
+    }];
+     */
     
     CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"transform"];
     animation.toValue = [NSValue valueWithCATransform3D:CATransform3DMakeTranslation(-_textLabel.frame.size.width - self.frame.size.width, 0, 0)];
